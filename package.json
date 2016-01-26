@@ -1,0 +1,23 @@
+{
+  "name": "node-calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cal.js",
+  "scripts": {
+    "test": "mocha --harmony_destructuring tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beezy12/node-calendar.git"
+  },
+  "author": "Brian Stumbaugh <brian.stumbaugh@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/beezy12/node-calendar/issues"
+  },
+  "homepage": "https://github.com/beezy12/node-calendar#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  }
+}
