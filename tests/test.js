@@ -7,7 +7,7 @@ const cp = require('child_process');
 
 describe('calendar application', () => {
 	describe('CLI', () => {
-		it('should be able to handle the current month', () => {
+		xit('should be able to handle the current month', () => {
 			// compare our cal app with the built in calendar app
 			// execSync is a method on child process;
 			const goal = cp.execSync('cal').toString();
@@ -68,58 +68,106 @@ describe('calendar application', () => {
 
 
 
-		// and more tests for .calculate
-		describe('.calculate', () => {
+		// and more tests for .getDay
+		describe('.getDay', () => {
 			it('return 1 for March 2, 2014', () => {
-				const mod = zellars.calculate(2014, 3, 2);
+				const mod = zellars.getDay(2014, 3, 2);
 
 				expect(mod).to.equal(1);
 			});
 
 			it('return 1 for January 1, 2012', () => {
-				const mod = zellars.calculate(2012, 1, 1);
+				const mod = zellars.getDay(2012, 1, 1);
 
 				expect(mod).to.equal(1);
 			});
 
 			it('return 5 for January 12, 2012', () => {
-				const mod = zellars.calculate(2012, 1, 12);
+				const mod = zellars.getDay(2012, 1, 12);
 
 				expect(mod).to.equal(5);
 			});
 
 			it('return 6 for February 1, 1799', () => {
-				const mod = zellars.calculate(1799, 2, 1);
+				const mod = zellars.getDay(1799, 2, 1);
 
 				expect(mod).to.equal(6);
 			});
 		});
 
+		describe('.displayHeader', () => {
+			const { displayHeader } = require('../lib/month.js');
 
-		// describe('write a function that centers month', () => {
-		// 	const center = require('../lib/center');
-		// 	it('should handle January', () => {
-		// 		expect(center('January 2016')).to equal('    January 2016');
-		// 	});
-		// 	it('should handle February', () => {
-		// 		expect(center('February 2016')).to equal('   February 2016');
-		// 	});
-		// });
+			it('should display month and year with proper prepended spacing', () => {
+
+				expect(displayHeader(1, 2016)).to.equal('    January 2016\nSu Mo Tu We Th Fr Sa');
+			});
+
+			it('should display the month and year with proper spacing', () => {
+
+			 	expect(displayHeader(5, 2016)).to.equal('      May 2016\nSu Mo Tu We Th Fr Sa');
+			});
+
+			it('should display the month and year with proper spacing', () => {
+
+			 	expect(displayHeader(8, 2016)).to.equal('    August 2016\nSu Mo Tu We Th Fr Sa');
+			});
+
+			it('should display the month and year with proper spacing', () => {
+
+			 	expect(displayHeader(6, 2016)).to.equal('     June 2016\nSu Mo Tu We Th Fr Sa');
+			});
+
+			it('should display the month and year with proper spacing', () => {
+
+			 	expect(displayHeader(9, 2016)).to.equal('   September 2016\nSu Mo Tu We Th Fr Sa');
+			});
+
+			it('should display the month and year with proper spacing', () => {
+
+			 	expect(displayHeader(9, 700)).to.equal('   September 700\nSu Mo Tu We Th Fr Sa');
+			});
+		});
+
+
+		describe('.showDays', () => {
+			const { showDays } = require('../lib/month.js');
+
+			it('should show the proper number of days for the given month', () => {
+				let arr = [1, 2, 3];
+				expect(showDays(1, 4)).to.eql(arr);
+			});
+		});
+
+
+
+
+
+
+
+
+
 
 	});
 });
 
 
 
-// build a module called zellars   (zellars.modifiedMonth comes from that)
-// require it:
-// const zellars = require('../zellars.js');
 
-// GOAL FOR TODAY:
-// minimum goal is to write a zellars module that will pass these 10 tests. It will have 3 functions.
 
-// LONG TERM GOAL:
-// output current month in the terminal
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
