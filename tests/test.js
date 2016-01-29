@@ -4,6 +4,7 @@
 const zellars = require('../lib/zellars');
 const { expect } = require('chai');
 const cp = require('child_process');
+const _ = require('lodash');
 
 describe('calendar application', () => {
 	describe('CLI', () => {
@@ -100,56 +101,63 @@ describe('calendar application', () => {
 
 			it('should display month and year with proper prepended spacing', () => {
 
-				expect(displayHeader(1, 2016)).to.equal('    January 2016\nSu Mo Tu We Th Fr Sa');
+				expect(displayHeader(1, 2016)).to.equal('    January 2016\nSu Mo Tu We Th Fr Sa\n');
 			});
 
 			it('should display the month and year with proper spacing', () => {
 
-			 	expect(displayHeader(5, 2016)).to.equal('      May 2016\nSu Mo Tu We Th Fr Sa');
+			 	expect(displayHeader(5, 2016)).to.equal('      May 2016\nSu Mo Tu We Th Fr Sa\n');
 			});
 
 			it('should display the month and year with proper spacing', () => {
 
-			 	expect(displayHeader(8, 2016)).to.equal('    August 2016\nSu Mo Tu We Th Fr Sa');
+			 	expect(displayHeader(8, 2016)).to.equal('    August 2016\nSu Mo Tu We Th Fr Sa\n');
 			});
 
 			it('should display the month and year with proper spacing', () => {
 
-			 	expect(displayHeader(6, 2016)).to.equal('     June 2016\nSu Mo Tu We Th Fr Sa');
+			 	expect(displayHeader(6, 2016)).to.equal('     June 2016\nSu Mo Tu We Th Fr Sa\n');
 			});
 
 			it('should display the month and year with proper spacing', () => {
 
-			 	expect(displayHeader(9, 2016)).to.equal('   September 2016\nSu Mo Tu We Th Fr Sa');
+			 	expect(displayHeader(9, 2016)).to.equal('   September 2016\nSu Mo Tu We Th Fr Sa\n');
 			});
 
 			it('should display the month and year with proper spacing', () => {
 
-			 	expect(displayHeader(9, 700)).to.equal('   September 700\nSu Mo Tu We Th Fr Sa');
+			 	expect(displayHeader(9, 700)).to.equal('   September 700\nSu Mo Tu We Th Fr Sa\n');
 			});
 		});
 
 
-		describe('.showDays', () => {
+		describe('.getMonthDays and .showDays', () => {
+			const { getMonthDays } = require('../lib/month.js');
 			const { showDays } = require('../lib/month.js');
 
 			it('should show the proper number of days for the given month', () => {
-				let arr = [1, 2, 3];
-				expect(showDays(1, 4)).to.eql(arr);
+				//let arr = [1, 2, 3];
+				expect(getMonthDays(1, 2016)).to.equal(31);
+			});
+
+			it('should display the range number of days for the given month', () => {
+				let arr = _.range(1, 32);
+				let res =  showDays(1, 2016)
+				expect(res).to.eql(arr);
 			});
 		});
-
-
-
-
-
-
 
 
 
 
 	});
 });
+
+
+
+
+
+
 
 
 
