@@ -148,6 +148,17 @@ describe('calendar application', () => {
 		});
 
 
+		// describe('.getFirstDay', (year, month, day) => {
+		// 	const { getDay } = require('../lib/zellars.js');
+		// 	const { getFirstDay } = require('../lib/month.js');
+
+		// 	it('should use zellars to figure out what day of the week the date given falls on', () => {
+		// 		// call zellars getDay method and assign the result to a variable
+		// 		let wutDay = getDay(2016, 1, 29);
+		// 		let actual = 6;
+		// 		expect(actual).to.equal(wutday)
+		// 	})
+		// })
 
 
 	});
