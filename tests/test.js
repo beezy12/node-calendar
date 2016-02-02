@@ -8,11 +8,11 @@ const _ = require('lodash');
 
 describe('calendar application', () => {
 	describe('CLI', () => {
-		xit('should be able to handle the current month', () => {
+		it('should be able to handle the current month', () => {
 			// compare our cal app with the built in calendar app
 			// execSync is a method on child process;
-			const goal = cp.execSync('cal').toString();
-			const output = cp.execSync('./lib/cal.js').toString();
+			const goal = cp.execSync('cal 3 2016').toString();
+			const output = cp.execSync('./cal.js').toString();
 
 
 			expect(output).to.equal(goal);
@@ -91,6 +91,11 @@ describe('calendar application', () => {
 
 			it('return 6 for February 1, 1799', () => {
 				const mod = zellars.getDay(1799, 2, 1);
+
+				expect(mod).to.equal(6);
+			});
+			it('return 6 for Jan 1, 2016', () => {
+				const mod = zellars.getDay(2016, 1, 1);
 
 				expect(mod).to.equal(6);
 			});
