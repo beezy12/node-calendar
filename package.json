@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha --harmony_destructuring --harmony_rest_parameters tests",
     "cover": "node --harmony_destructuring --harmony_rest_parameters ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha tests",
-    "coveralls": "npm run cover && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coveralls": "npm run cover && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "serve": "nodemon cal.js"
   },
   "repository": {
     "type": "git",
